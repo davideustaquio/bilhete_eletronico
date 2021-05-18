@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "670833054389",
+    "firebase_url": "https://bilhete-eletronico-default-rtdb.firebaseio.com",
+    "project_id": "bilhete-eletronico",
+    "storage_bucket": "bilhete-eletronico.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:670833054389:android:20b78f5e459fa6291164fc",
+        "android_client_info": {
+          "package_name": "com.example.bilhete_eletronico"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "670833054389-c1acpfa8ro5n1kdr2p1cm567lr4498lk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyMWqjeH_U1RzcJmGRvld5igUSp59hfF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "670833054389-c1acpfa8ro5n1kdr2p1cm567lr4498lk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
