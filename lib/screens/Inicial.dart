@@ -7,7 +7,7 @@ class Inicial extends StatelessWidget {
       width: 220,
       height: 35.43,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(10),
       ),
       child: null,
     );
