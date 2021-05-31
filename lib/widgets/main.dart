@@ -1,6 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'package:bilhete_eletronico/screens/Inicial.dart';
+import 'package:bilhete_eletronico/widgets/login.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Bilhete Eletrônico Alfenas',
-      home: Inicial(),
+      home: LoginPage(),
     );
   }
 }
