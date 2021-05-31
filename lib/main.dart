@@ -1,3 +1,4 @@
+import 'package:bilhete_eletronico/pages/home.dart';
 import 'package:bilhete_eletronico/pages/login.dart';
 import 'package:flutter/material.dart';
 

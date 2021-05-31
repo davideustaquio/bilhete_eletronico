@@ -55,27 +55,6 @@ class LoginPage extends StatelessWidget {
               style: TextStyle(fontSize: 20),
             ),
             Container(
-              height: 40,
-              alignment: Alignment.centerRight,
-              child: TextButton(
-                child: Text(
-                  "Recuperar número do cartão do bilhete eletronico",
-                  textAlign: TextAlign.right,
-                ),
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ResetPasswordPage(),
-                    ),
-                  );
-                },
-              ),
-            ),
-            SizedBox(
-              height: 40,
-            ),
-            Container(
               height: 60,
               alignment: Alignment.centerLeft,
               decoration: BoxDecoration(
