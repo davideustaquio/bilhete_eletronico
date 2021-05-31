@@ -1,5 +1,4 @@
-import 'package:bilhete_eletronico/pages/reset-password.dart';
-import 'package:bilhete_eletronico/pages/register.dart';
+import 'package:bilhete_eletronico/screens/register.dart';
 import 'package:bilhete_eletronico/screens/Inicial.dart';
 import 'package:flutter/material.dart';
 

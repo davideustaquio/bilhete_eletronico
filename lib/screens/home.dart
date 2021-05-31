@@ -1,5 +1,5 @@
-import 'package:bilhete_eletronico/pages/login.dart';
-import 'package:bilhete_eletronico/pages/register.dart';
+import 'package:bilhete_eletronico/screens/login.dart';
+import 'package:bilhete_eletronico/screens/register.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
