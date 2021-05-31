@@ -15,7 +15,7 @@ class SignupPage extends StatelessWidget {
               alignment: Alignment(0.0, 1.15),
               decoration: new BoxDecoration(
                 image: new DecorationImage(
-                  image: AssetImage("assets/profile-picture.png"),
+                  image: AssetImage("assets/"),
                   fit: BoxFit.fitHeight,
                 ),
               ),
@@ -75,6 +75,24 @@ class SignupPage extends StatelessWidget {
             ),
             TextFormField(
               // autofocus: true,
+              keyboardType: TextInputType.text,
+              decoration: InputDecoration(
+                labelText: "CPF",
+                labelStyle: TextStyle(
+                  color: Colors.black38,
+                  fontWeight: FontWeight.w400,
+                  fontSize: 20,
+                ),
+              ),
+              style: TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextFormField(
+              // autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
                 labelText: "E-mail",
@@ -96,7 +114,7 @@ class SignupPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "Numero do cartão do bilhete eletronico",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,

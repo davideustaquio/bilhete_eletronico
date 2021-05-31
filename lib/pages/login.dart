@@ -1,5 +1,5 @@
-import 'package:bilhete_eletronico/widgets/reset-password.dart';
-import 'package:bilhete_eletronico/widgets/signup.page.dart';
+import 'package:bilhete_eletronico/pages/reset-password.dart';
+import 'package:bilhete_eletronico/pages/register.dart';
 import 'package:bilhete_eletronico/screens/Inicial.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +19,7 @@ class LoginPage extends StatelessWidget {
             SizedBox(
               width: 128,
               height: 128,
-              child: Image.asset("assets/logo.png"),
+              child: Image.asset("assets/"),
             ),
             SizedBox(
               height: 20,
@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
               // autofocus: true,
               keyboardType: TextInputType.emailAddress,
               decoration: InputDecoration(
-                labelText: "E-mail",
+                labelText: "CPF",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -45,7 +45,7 @@ class LoginPage extends StatelessWidget {
               keyboardType: TextInputType.text,
               obscureText: true,
               decoration: InputDecoration(
-                labelText: "Senha",
+                labelText: "Número do cartão do Bilhete Eletronico",
                 labelStyle: TextStyle(
                   color: Colors.black38,
                   fontWeight: FontWeight.w400,
@@ -59,7 +59,7 @@ class LoginPage extends StatelessWidget {
               alignment: Alignment.centerRight,
               child: TextButton(
                 child: Text(
-                  "Recuperar Senha",
+                  "Recuperar número do cartão do bilhete eletronico",
                   textAlign: TextAlign.right,
                 ),
                 onPressed: () {
@@ -108,7 +108,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       Container(
                         child: SizedBox(
-                          child: Image.asset("assets/bone.png"),
+                          child: Image.asset("assets/"),
                           height: 28,
                           width: 28,
                         ),
