@@ -6,11 +6,12 @@ class FirestoreService {
 
   //CRUD
   //criar - atualizar
-  Future<void> createUsuario(Cliente cliente) {
+  Future<void> saveCliente(Cliente cliente) {
     return _db
-        .collection('cliente')
-        .doc(cliente.clienteId)
-        .set(cliente.toMap());
+        .collection(
+            'clientes') //EM QUAL COLEÇÃO VOU QUERER ALTERAR, NO CASO 'clientes'
+        .doc(cliente.clienteID) //EM QUAL DOCUMENTO EU QUERO ALTERAR
+        .set(cliente.toMap()); // O MÉTODO toMap(); veio da classe cliente
   }
 
   //ler-consultar
@@ -22,7 +23,7 @@ class FirestoreService {
   }
 
   //remover
-  Future<void> removeUsuario(String clienteId) {
-    return _db.collection('cliente').doc(clienteId).delete();
+  Future<void> removeCliente(String clienteID) {
+    return _db.collection('clienteID').doc(clienteID).delete();
   }
 }
