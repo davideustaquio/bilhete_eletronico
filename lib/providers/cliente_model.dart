@@ -1,37 +1,37 @@
 import 'package:bilhete_eletronico/models/cliente.dart';
 import 'package:bilhete_eletronico/services/firestore_service.dart';
 import 'package:flutter/foundation.dart';
+import 'package:uuid/uuid.dart';
 //import 'package:uuid/uuid.dart';
 
 class ClienteModel extends ChangeNotifier {
   final firestoreservice = FirestoreService();
 
-  int _cartaoID;
+  int _numerocartao;
   String _clienteID;
   int _cpf;
   String _nome;
   String _email;
   int _celular;
   double _saldo;
-  //var uuid = Uuid();
+  var uuid = Uuid();
 
   //GETTERS AND SETTERS
-  int get cartaoID => _cartaoID;
+  int get numerocartao => _numerocartao;
   double get saldo => _saldo;
-
   String get clienteID => _clienteID;
   int get cpf => _cpf;
   String get nome => _nome;
   String get email => _email;
   int get celular => _celular;
 
-  setCartaoID(String cartaoID) {
-    _cartaoID = int.parse(cartaoID);
+  setnumerocartao(String numerocartao) {
+    _numerocartao = int.parse(numerocartao);
     notifyListeners();
   }
 
-  setSaldo(double saldo) {
-    _saldo = saldo;
+  setSaldo(String saldo) {
+    _saldo = double.parse(saldo);
     notifyListeners();
   }
 
@@ -60,14 +60,14 @@ class ClienteModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  loadCliente(Cliente cartao) {
-    _cpf = cartao.cpf;
-    _nome = cartao.nome;
-    _email = cartao.email;
-    _celular = cartao.celular;
-    _clienteID = cartao.clienteID;
-    _cartaoID = cartaoID;
-    _saldo = saldo;
+  loadCliente(Cliente cliente) {
+    _cpf = cliente.cpf;
+    _nome = cliente.nome;
+    _email = cliente.email;
+    _celular = cliente.celular;
+    _clienteID = cliente.clienteID;
+    _numerocartao = cliente.numerocartao;
+    _saldo = cliente.saldo;
   }
 
   saveCliente() {
@@ -75,20 +75,22 @@ class ClienteModel extends ChangeNotifier {
     if (_clienteID == null) {
       var novoCliente = Cliente(
           nome: nome,
+          cpf: cpf,
           email: email,
           celular: celular,
-          clienteID: clienteID,
-          cartaoID: cartaoID,
+          clienteID: uuid.v4(),
+          numerocartao: numerocartao,
           saldo: saldo);
       firestoreservice.saveCliente(novoCliente);
     } else {
       //UPDATE
       var alteraCliente = Cliente(
           nome: nome,
+          cpf: cpf,
           celular: celular,
           email: email,
           clienteID: _clienteID,
-          cartaoID: cartaoID,
+          numerocartao: numerocartao,
           saldo: saldo);
       firestoreservice.saveCliente(alteraCliente);
     }

@@ -1,4 +1,4 @@
-import 'package:bilhete_eletronico/providers/cartao_models.dart';
+import 'package:bilhete_eletronico/providers/cliente_model.dart';
 import 'package:bilhete_eletronico/screens/cliente_page.dart';
 import 'package:bilhete_eletronico/screens/home_page.dart';
 import 'package:bilhete_eletronico/screens/horario_page.dart';
@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         StreamProvider(create: (context) => firestoreservice.getClientes()),
       ],
       child: MaterialApp(
-       debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'Bilhete Eletrônico Alfenas',
         home: HomePage(),
       ),

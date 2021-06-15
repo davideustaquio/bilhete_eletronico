@@ -4,8 +4,8 @@ class Cliente {
   final String nome;
   final String email;
   final int celular;
-  final String senha;
-  final int cartaoID;
+  //final String senha;
+  final int numerocartao;
   final double saldo;
 
   Cliente(
@@ -14,19 +14,19 @@ class Cliente {
       this.nome,
       this.email,
       this.celular,
-      this.senha,
-      this.cartaoID,
+      //this.senha,
+      this.numerocartao,
       this.saldo});
 
   Map<String, dynamic> toMap() {
     return {
-      'clienteCPF': clienteID,
+      'clienteID': clienteID,
       'cpf': cpf,
       'nome': nome,
       'email': email,
       'celular': celular,
-      'senha': senha,
-      'cartaoID': cartaoID,
+      //'senha': senha,
+      'numerocartao': numerocartao,
       'saldo': saldo
     };
   }
@@ -37,7 +37,7 @@ class Cliente {
         nome = firestoredocument['nome'],
         email = firestoredocument['email'],
         celular = firestoredocument['celular'],
-        senha = firestoredocument['senha'],
-        cartaoID = firestoredocument['cartaoID'],
+       // senha = firestoredocument['senha'],
+        numerocartao = firestoredocument['numerocartao'],
         saldo = firestoredocument['saldo'];
 }

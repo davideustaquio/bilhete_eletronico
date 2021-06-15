@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AutenticacaoService {
-  static Future<User> registrarCliente(
-      {String nome,
-      String email,
-      String senha,
-      String cpf,
-      String celular,
-      String cartaoID}) async {
+  static Future<User> registrarCliente({
+    String nome,
+    String email,
+    String senha,
+  }) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User user;
     try {

@@ -114,8 +114,8 @@ class _LoginPageState extends State<LoginPage> {
                                           });
 
                                           if (user != null) {
-                                            Navigator.of(context)
-                                                .pushReplacement(
+                                            Navigator.pushReplacement(
+                                              context,
                                               MaterialPageRoute(
                                                 builder: (context) =>
                                                     ClientePage(),

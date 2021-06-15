@@ -1,5 +1,5 @@
 import 'package:bilhete_eletronico/models/cliente.dart';
-import 'package:bilhete_eletronico/providers/cartao_models.dart';
+import 'package:bilhete_eletronico/providers/cliente_model.dart';
 import 'package:bilhete_eletronico/services/autenticacao_service.dart';
 import 'package:bilhete_eletronico/validaEmail/valida_email.dart';
 import 'package:bilhete_eletronico/widgets/appBar_widgets.dart';
@@ -9,22 +9,28 @@ import 'package:provider/provider.dart';
 
 class RegisterPage extends StatefulWidget {
   final Cliente cliente;
+  //final Cartao cartao;
 
-  RegisterPage([this.cliente]); //construtor como opcional passando o cliente
+  RegisterPage([
+    this.cliente,
+  ]); //construtor como opcional passando o cliente e
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   //
   final nomecontroller = TextEditingController();
   final cpfcontroller = TextEditingController();
   final emailcontroller = TextEditingController();
   final celularcontroller = TextEditingController();
-  final cartaoIDcontroller = TextEditingController();
+  final numerocartaocontroller = TextEditingController();
   final senhaController = TextEditingController();
+  final saldocontroller = TextEditingController();
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  User user = FirebaseAuth.instance.currentUser;
+  bool _isProcessing = false;
 
   //verifica se vem algo ou não do banco
   @override
@@ -35,8 +41,9 @@ class _RegisterPageState extends State<RegisterPage> {
       cpfcontroller.text = "";
       emailcontroller.text = "";
       celularcontroller.text = "";
-      cartaoIDcontroller.text = "";
-      senhaController.text = "";
+      numerocartaocontroller.text = "";
+      //senhaController.text = "";
+      saldocontroller.text = "0";
 
       final clienteprovider = Provider.of<ClienteModel>(context, listen: false);
       clienteprovider.loadCliente(Cliente());
@@ -46,8 +53,9 @@ class _RegisterPageState extends State<RegisterPage> {
       cpfcontroller.text = widget.cliente.cpf.toString();
       emailcontroller.text = widget.cliente.email;
       celularcontroller.text = widget.cliente.celular.toString();
-      cartaoIDcontroller.text = widget.cliente.cartaoID.toString();
-      senhaController.text = widget.cliente.senha.toString();
+      numerocartaocontroller.text = widget.cliente.numerocartao.toString();
+      //senhaController.text = widget.cliente.senha.toString();
+      saldocontroller.text = widget.cliente.saldo.toString();
 
       final clienteprovider = Provider.of<ClienteModel>(context, listen: false);
       clienteprovider.loadCliente(widget.cliente);
@@ -55,11 +63,10 @@ class _RegisterPageState extends State<RegisterPage> {
     super.initState();
   }
 
-  bool _isProcessing = false;
-
   @override
   Widget build(BuildContext context) {
-    //final clienteprovider = Provider.of<ClienteModel>(context);
+    final clienteprovider = Provider.of<ClienteModel>(context);
+
     return Scaffold(
       appBar: AppBarWidgets(
           // centerTitle: true,
@@ -71,7 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
         //color: Colors.white,
         child: Stack(
           children: <Widget>[
-            Padding(
+            Container(
               padding: EdgeInsets.only(left: 30, right: 30, bottom: 10),
               child: Center(
                 child: Container(
@@ -157,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       TextFormField(
                         // autofocus: true,
                         //obscureText: true,
-                        controller: cartaoIDcontroller,
+                        controller: numerocartaocontroller,
                         keyboardType: TextInputType.number,
                         decoration: InputDecoration(
                           labelText: "Número do cartão do bilhete eletrônico",
@@ -209,15 +216,28 @@ class _RegisterPageState extends State<RegisterPage> {
                                             .registrarCliente(
                                           nome: nomecontroller.text,
                                           email: emailcontroller.text,
-                                          cpf: cpfcontroller.text,
-                                          celular: celularcontroller.text,
-                                          cartaoID: cartaoIDcontroller.text,
                                           senha: senhaController.text,
                                         );
 
-                                        setState(() {
+                                        /* setState(() {
                                           _isProcessing = false;
-                                        });
+                                        }); */
+
+                                        //salvando no bd
+                                        clienteprovider
+                                            .setNome(nomecontroller.text);
+                                        clienteprovider
+                                            .setCpf(cpfcontroller.text);
+                                        clienteprovider
+                                            .setCelular(celularcontroller.text);
+                                        clienteprovider
+                                            .setEmail(emailcontroller.text);
+                                        clienteprovider.setnumerocartao(
+                                            numerocartaocontroller.text);
+                                        clienteprovider
+                                            .setSaldo(saldocontroller.text);
+                                        clienteprovider.setClienteID(user.uid);
+                                        clienteprovider.saveCliente();
 
                                         if (user != null) {
                                           ScaffoldMessenger.of(context)

@@ -1,4 +1,4 @@
-//import 'package:bilhete_eletronico/models/cliente.dart';
+/* //import 'package:bilhete_eletronico/models/cliente.dart';
 
 class Cartao {
   final String cartaoId;
@@ -16,3 +16,4 @@ class Cartao {
         saldo = firestoredocument['saldo'],
         clienteID = firestoredocument['clienteID'];
 }
+ */
