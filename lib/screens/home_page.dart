@@ -18,11 +18,15 @@ class HomePage extends StatelessWidget {
             ),
           ),
           new Container(
-            margin: const EdgeInsets.only(top: 160),
+            margin: const EdgeInsets.only(top: 160, left: 30, right: 30),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Image.asset('images/logo_bilhete.png'),
+                Image.asset(
+                  'images/logo_bilhete.png',
+                  width: 350,
+                  height: 200,
+                ),
               ],
             ),
           ),
@@ -55,9 +59,9 @@ class HomePage extends StatelessWidget {
                 ),
                 SizedBox(height: 10),
                 ElevatedButton(
+                    //utilizar OutlinedButton como opção
                     onPressed: () {
-                      Navigator.push(
-                        context,
+                      Navigator.of(context).push(
                         MaterialPageRoute(
                           builder: (context) => RegisterPage(),
                         ),

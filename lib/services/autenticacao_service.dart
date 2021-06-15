@@ -1,8 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AutenticacaoService {
-  static Future<User> registrarCliente(
-      {String nome, String email, String senha}) async {
+  static Future<User> registrarCliente({
+    String nome,
+    String email,
+    String senha,
+  }) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     User user;
     try {
@@ -19,7 +22,7 @@ class AutenticacaoService {
         print('Email existente');
       }
     } catch (e) {
-      print(e.toString());
+      print(e);
     }
     return user;
   }
@@ -48,11 +51,5 @@ class AutenticacaoService {
   static Future<User> signOutCliente(User user) async {
     FirebaseAuth auth = FirebaseAuth.instance;
     auth.signOut();
-
-    /*METODO ALTERNATIVO
-    await user.reload();
-    User refreshuser = auth.currentUser;
-    return refreshuser;
-    */
   }
 }
