@@ -1,6 +1,8 @@
 import 'package:bilhete_eletronico/screens/duvida_page.dart';
 import 'package:bilhete_eletronico/screens/horario_page.dart';
+import 'package:bilhete_eletronico/screens/recarga_page.dart';
 import 'package:bilhete_eletronico/widgets/appBarUser_widget.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class ClientePage extends StatefulWidget {
@@ -11,16 +13,25 @@ class ClientePage extends StatefulWidget {
 }
 
 class _ClientePageState extends State<ClientePage> {
+  User user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarUserWidgets(),
       body: new Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
+            SizedBox(height: 80),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => RecargaPage(),
+                    ));
+              },
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.only(
                     left: 40.0, top: 20, right: 40.0, bottom: 20),
@@ -71,7 +82,30 @@ class _ClientePageState extends State<ClientePage> {
               ),
               child: Text('DÚVIDAS FREQUENTES'),
             ),
-            Divider(height: 60),
+            Divider(height: 110),
+            //SizedBox(height: 10),
+
+            Text(
+              'Empresa de Transporte Coletivo Ltda.',
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.green.shade900,
+              ),
+            ),
+            Text(
+              'Av. Alfenas, 155, Centro - Alfenas-MG',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.green.shade900,
+              ),
+            ),
+            Text(
+              'Tel: (35) 3222 4455',
+              style: TextStyle(
+                fontSize: 14,
+                color: Colors.green.shade900,
+              ),
+            ),
           ],
         ),
       ),

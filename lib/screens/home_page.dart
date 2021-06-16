@@ -1,8 +1,33 @@
 import 'package:bilhete_eletronico/screens/login_page.dart';
 import 'package:bilhete_eletronico/screens/register_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Future<SharedPreferences> prefs = SharedPreferences.getInstance();
+  bool _isProcessing = false;
+  void initState() {
+    User user = FirebaseAuth.instance.currentUser;
+
+    /*if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => ProfileScreen(
+            user: user,
+          ),
+        ),
+      );
+    }*/
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Image(image: AssetImage('images/fundo_app.png'));
