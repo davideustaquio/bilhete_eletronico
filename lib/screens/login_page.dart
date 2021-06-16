@@ -23,6 +23,14 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     User user = FirebaseAuth.instance.currentUser;
+
+    if (user != null) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (context) => HomePage(),
+        ),
+      );
+    }
     super.initState();
   }
 
